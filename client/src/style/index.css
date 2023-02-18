@@ -1,0 +1,30 @@
+:root {
+    --main:#2955a7;
+}
+
+#title {
+    color:white;
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+.navbar {
+    height: 20%;
+    background-color: var(--main);
+}
+
+.footer {
+    position: fixed;
+    background-color: var(--main);
+    background-size: cover;
+    padding: 5% 0;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+
+#footer-text {
+    text-align: center;
+    color:white;
+}
