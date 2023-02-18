@@ -11,7 +11,7 @@ const typeDefs = gql`
     jobId: String!
   }
   input SaveJobInput {
-    
+    jobId: String!
   }
   type Auth {
     token: ID
