@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Box, Typography, Stack, Card, Button } from '@mui/material'
 
 export const Home = () => {
@@ -12,7 +13,12 @@ export const Home = () => {
                     Have you recently been laid off and urgently looking for a new one? No worries, Jobboard is here. We connect thousands of users to potential employers. Most users find employment within a month.
                     Signup to get started on your job search!
                 </Typography>
-                <Button variant="outlined">Sign Up</Button>
+                <Button variant="outlined" as={Link} to="/signup">
+                    Sign Up
+                </Button>
+                <Button variant="outlined" as={Link} to="/login">
+                    Login
+                </Button>
             </Box>
             <Stack 
                 direction={{ xs: 'column', sm: 'column', md:'row' }} 
