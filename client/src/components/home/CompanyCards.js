@@ -54,22 +54,24 @@ export const CompanyCards = (props) => {
     //     }
     // })
 
-    // const handleSaveJob = async (id, foodtype, name, image_url, is_closed, url, rating, price, display_phone, distance) => {
+    // const handleSaveJob = async (job_id, employer_name, employer_logo, apply_link, description, is_remote, posted_date, country, state, city, offer_expire) => {
     //     const token = authService.loggedIn() ? authService.getToken() : null;
     //     if(!token) {
     //         return false
     //     }
     //     try {
     //         await saveJob({ variables: { input: {
-    //             jobId: id,
-    //             foodtype: props.food.trim().charAt(0).toUpperCase() + props.food.trim().slice(1).toLowerCase(),
-    //             name: name,
-    //             image_url: image_url,
-    //             is_closed: is_closed,
-    //             url: url,
-    //             rating: rating,
-    //             price: price,
-    //             display_phone: display_phone,
+    //             job_id: job_id,
+    //             employer_name: employer_name,
+                // employer_logo: employer_logo,
+                // apply_link: apply_link,
+                // description: description,
+                // is_remote: is_remote,
+                // posted_date: posted_date,
+                // country: country,
+                // state: state,
+                // city: city,
+                // offer_expire: offer_expire
     //         }}})
 
     //         if(saveJob.error) { throw new Error('Something went wrong.')}
@@ -77,18 +79,15 @@ export const CompanyCards = (props) => {
     //         console.error(error)
     //     }
     // }
-    // const handleClose = (id) => {
-    //     setShow((prevState) => ({ ...prevState, [id]: false }));
+    // const handleClose = (job_id) => {
+    //     setShow((prevState) => ({ ...prevState, [job_id]: false }));
     // };
-    // const handleShow = async (id) => {
-    //     setShow((prevState) => ({ ...prevState, [id]: true }));
-    //     // Searching foodId and reviews from API
-    //     const response = await searchJob(userJob)
-    //     setSearchedJob(response)
+    // const handleShow = async (job_id) => {
+    //     setShow((prevState) => ({ ...prevState, [job_id]: true }));
     //     // console.log(id)
 
     // }
-    // const handleDeleteJob = async (jobId) => {
+    // const handleDeleteJob = async (job_id) => {
     //     const token = authService.loggedIn() ? authService.getToken() : null
     //     if (!token) {
     //         return false
@@ -96,7 +95,7 @@ export const CompanyCards = (props) => {
 
     //     try {
     //         const updatedData = await removeJob({
-    //             variables: { jobId: jobId }
+    //             variables: { job_id: job_id }
     //         })
     //         if(updatedData.error) {
     //             throw new Error('Something went wrong.')

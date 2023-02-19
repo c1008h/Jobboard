@@ -1,22 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const axios = require('axios')
-require('dotenv').config({path: __dirname+'../../../env'});
-const data = require('../../constants/jobData.json')
+const data = require('../../constants/jobData.json');
 
-// console.log(data)
+console.log(data.data)
 
 router.post('/', (req, res) => {
     const { userJob } = req.body;
-    console.log(userJob)
+    const matches = data.data.filter(job => job.job_title.includes(userJob));
 
-    axios.get(data.data)
-    .then((response) => {
-        res.send(response.data)
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+    if (!matches) {
+        console.log('No matches found!')
+    }
+    res.send(matches)
+    console.log(matches)
 })
 
-module.export = router;
+module.exports = router;

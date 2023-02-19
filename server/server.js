@@ -28,8 +28,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-// app.use('/api/skill', require('./routes/api/skill'))
-// app.use('/api/job', require('./routes/api/job'))
+app.use('/api/skill', require('./routes/api/skill'))
+app.use('/api/job', require('./routes/api/job'))
 
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start(); 

@@ -8,10 +8,31 @@ const typeDefs = gql`
     savedJobs: [Job]
   }
   type Job {
-    jobId: String!
+    job_id: String!
+    employer_name: String
+    employer_logo: String
+    apply_link: String
+    description: String
+    is_remote: Boolean
+    posted_date: String
+    country: String
+    state: String
+    city: String
+    offer_expire: String
   }
+
   input SaveJobInput {
-    jobId: String!
+    job_id: String!
+    employer_name: String
+    employer_logo: String
+    apply_link: String
+    description: String
+    is_remote: Boolean
+    posted_date: String
+    country: String
+    state: String
+    city: String
+    offer_expire: String
   }
   type Auth {
     token: ID
@@ -26,7 +47,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveJob(input: SaveJobInput!): User
-    removeJob(jobId: String!): User
+    removeJob(job_id: String!): User
   }
 `;
 
