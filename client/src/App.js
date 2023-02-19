@@ -10,10 +10,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { Homepage } from './pages/Homepage'
 import { MyProfile } from './pages/MyProfile'
+import { Savedjobs } from './pages/Savedjobs'
+// import { ViewOneCompany } from './pages/ViewOneCompany'
+// import { ViewOneSavedJob } from './pages/ViewOneSavedJob'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
-import {Signup} from './pages/Signup'
-import {Login} from './pages/Login'
+import { Signup } from './pages/Signup'
+import { Login } from './pages/Login'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -48,6 +51,10 @@ function App() {
             <Route
               path='/'
               index element={<Homepage />}
+            />
+             <Route 
+                path="/savedjobs" 
+                element={<Savedjobs />} 
             />
             <Route 
                 path="/myprofile" 
