@@ -8,6 +8,7 @@ import { QUERY_ME } from '../../utils/queries';
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
     const [userData, setUserData] = useState({})
+    const [isSelected, setIsSelected] = useState(false);
     const [loading, setLoading] = useState(true)
     const [removeJob] = useMutation(REMOVE_JOB);
     console.log(props)
@@ -159,7 +160,7 @@ export const CompanyCards = (props) => {
                                     /> */}
                                 </Card.Body>
                                 <Button type="button" 
-                                    className="btn btn-secondary m-1"
+                                    className={`btn ${isSelected ? 'selected' : ''}btn-secondary m-1`}
                                     onClick={() => handleShow(item.job_id)}
                                 >More Info</Button>
                             </Card> 

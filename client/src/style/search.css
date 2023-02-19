@@ -8,3 +8,17 @@
     overflow: hidden;
     text-overflow: ellipsis
 }
+
+/* .btn {
+    transition: transform 0.5s;
+}
+
+.card.selected {
+    transform: translateX(50%) scale(1.2);
+    z-index: 1;
+}
+  
+.card:not(.selected) {
+    transform: translateX(-50%);
+    z-index: 0;
+} */
