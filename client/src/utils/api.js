@@ -3,7 +3,7 @@ axios.defaults.headers.common['Access-Control-Allow-Credentials'] = true
 
 export const searchSkill = (userSkill) => {
     return axios
-        .post("http://localhost:3001/api/skill", {
+        .post("http://localhost:3002/api/skill", {
             userSkill: userSkill.trim()
         })
         .then((response) => {
@@ -17,7 +17,7 @@ export const searchSkill = (userSkill) => {
 
 export const searchJob = ( userJob ) => {
     return axios
-    .post('http://localhost:3001/api/job', {
+    .post('http://localhost:3002/api/job', {
         userJob: userJob.trim()
     })
     .then((response) => {

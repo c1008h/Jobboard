@@ -37,7 +37,7 @@ export const MyProfile = () => {
     // axios.get()
     return (
         <Box>
-            <Typography fontSize={30}>Dashboard</Typography>
+            <Typography fontSize={30}>My Profile</Typography>
             <Stack direction='column'>
 
                 {/* <div {...getRootProps()}>
