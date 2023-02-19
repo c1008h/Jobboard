@@ -6,7 +6,7 @@ const db = require('./config/connection');
 
 const { typeDefs, resolvers } = require('./schemas');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 
 const server = new ApolloServer({
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-app.use('/api/skill', require('./routes/api/skill'))
+// app.use('/api/skill', require('./routes/api/skill'))
 
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start(); 

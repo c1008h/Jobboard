@@ -25,3 +25,47 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_JOB = gql`
+  mutation saveJob($input: SaveJobInput!) {
+    saveJob(input: $input) {
+      username
+      saveJobs {
+        job_id
+        employer_name
+        employer_logo
+        apply_link
+        description
+        is_remote
+        posted_date
+        country
+        state
+        city
+        offer_expire
+      }
+    }
+  }
+`;
+
+export const REMOVE_JOB = gql`
+  mutation removeJob($jobId: String!) {
+    removeJob(jobId: $jobId) {
+      _id
+      username
+      email
+      savedJobs {
+        job_id
+        employer_name
+        employer_logo
+        apply_link
+        description
+        is_remote
+        posted_date
+        country
+        state
+        city
+        offer_expire
+      }
+    }
+  }
+`;

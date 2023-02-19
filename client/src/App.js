@@ -21,7 +21,7 @@ import { Login } from './pages/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql'
+  uri: 'http://localhost:3002/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {

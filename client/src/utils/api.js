@@ -14,3 +14,17 @@ export const searchSkill = (userSkill) => {
             console.error(error)
         })
 }
+
+export const searchJob = ( userJob ) => {
+    return axios
+    .post('http://localhost:3001/api/job', {
+        userJob: userJob.trim()
+    })
+    .then((response) => {
+        console.log(response.data)
+        return response.data
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}

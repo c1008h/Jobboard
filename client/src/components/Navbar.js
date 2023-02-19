@@ -17,6 +17,7 @@ export const Navbar = () => {
             {authService.loggedIn()?(
 
                 <>
+                <Dropdown.Item as={Link} to="/savedjobs">View Saved Jobs</Dropdown.Item>
                 <Dropdown.Item as={Link} to="/myprofile">My Profile</Dropdown.Item>
                 <Dropdown.Item as={Link} to="/allfoods" onClick={ logout }>Logout</Dropdown.Item>
                 </>

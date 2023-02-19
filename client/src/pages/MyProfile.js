@@ -7,39 +7,40 @@ import {  Root,
     InputWrapper,
     StyledTag,
     Listbox 
-} from '../components/myprofile'
+} from '../components/myprofile/SkillComponent'
 
 import axios from 'axios';
-import data from '../../jobData.json'
+import {searchSkill} from '../utils/api'
 
 export const MyProfile = () => {
-    const {
-        getRootProps,
-        getInputLabelProps,
-        getInputProps,
-        getTagProps,
-        getListboxProps,
-        getOptionProps,
-        groupedOptions,
-        value,
-        focused,
-        setAnchorEl,
-    } = useAutocomplete({
-        id: 'customized-hook-demo',
-        defaultValue: [data[0]],
-        multiple: true,
-        options: data[0],
-        getOptionLabel: (option) => option.title,
-    });
+    // data = searchSkill
+    // const {
+    //     getRootProps,
+    //     getInputLabelProps,
+    //     getInputProps,
+    //     getTagProps,
+    //     getListboxProps,
+    //     getOptionProps,
+    //     groupedOptions,
+    //     value,
+    //     focused,
+    //     setAnchorEl,
+    // } = useAutocomplete({
+    //     id: 'customized-hook-demo',
+    //     defaultValue: [data[0]],
+    //     multiple: true,
+    //     options: data[0],
+    //     getOptionLabel: (option) => option.title,
+    // });
 
-    console.log(data[0])
-    axios.get()
+    // console.log(data[0])
+    // axios.get()
     return (
         <Box>
             <Typography fontSize={30}>Dashboard</Typography>
             <Stack direction='column'>
 
-                <div {...getRootProps()}>
+                {/* <div {...getRootProps()}>
                     <Label {...getInputLabelProps()}>Customized hook</Label>
                     <InputWrapper ref={setAnchorEl} className={focused ? 'focused' : ''}>
                     {value.map((option, index) => (
@@ -54,11 +55,11 @@ export const MyProfile = () => {
                     {groupedOptions.map((option, index) => (
                         <li {...getOptionProps({ option, index })}>
                         <span>{option.title}</span>
-                        {/* <CheckedIcon fontSize="small" /> */}
+                        <CheckedIcon fontSize="small" /> 
                         </li>
-                    ))}
-                    </Listbox>
-                ) : null}
+                  ))} 
+                   </Listbox>
+                 ) : null )} */}
 
             </Stack>
 
