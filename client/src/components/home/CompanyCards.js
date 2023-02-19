@@ -118,18 +118,18 @@ export const CompanyCards = (props) => {
             <div className='col-12 row' style={{justifyContent:'center'}}> 
                 {props.data.map((item, index) => (
                     <Card key={index.job_id}  className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
-                        <Card.Title>{item.employer_name}</Card.Title>
-                        <Card.Img id='displayImage' src={item.employer_logo} alt='job' style={{height:'30%'}} />
-                        <Card.Body>
+                        {item.employer_logo ? (
+                            <Card.Img id='displayImage' src={item.employer_logo} alt='job' style={{height:'30%'}} /> )
+                            :
+                            (<Card.Title>{item.employer_name}</Card.Title>)
+                        }
+                        <Card.Body id='cardbody'>
                             <p>Title: {item.job_title}</p>
                             <p>Description: {item.job_description}</p>
                             <p>Website: <a href={item.employer_website}>{item.employer_website}</a></p>
                             <p>Remote: {item.is_remote ? 'True' : 'False'}</p>
                             <p>{item.job_city}, {item.job_state}, {item.job_country}</p>
-                            <Button type="button" 
-                            className="btn btn-secondary m-1"
-                            onClick={() => handleShow(item.job_id)}
-                            >More Info</Button>
+
                             {/* {userData && userData.savedJobs && !userData.savedJobs.includes(item.job_id) ? (
                                 <Button type="button" 
                                     className="btn btn-secondary m-1"
@@ -155,6 +155,10 @@ export const CompanyCards = (props) => {
                                 handleDeleteFood={handleDeleteFood}
                             /> */}
                         </Card.Body>
+                        <Button type="button" 
+                            className="btn btn-secondary m-1"
+                            onClick={() => handleShow(item.job_id)}
+                            >More Info</Button>
                     </Card> 
 
                 ))}

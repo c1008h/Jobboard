@@ -1,0 +1,10 @@
+#displayCards {
+    height: 600px;
+    margin: 10px;
+    padding: 2%;
+}
+
+#cardbody {
+    overflow: hidden;
+    text-overflow: ellipsis
+}
