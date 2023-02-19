@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Homepage } from './pages/Homepage'
 import { MyProfile } from './pages/MyProfile'
 import { Savedjobs } from './pages/Savedjobs'
-// import { ViewOneCompany } from './pages/ViewOneCompany'
-// import { ViewOneSavedJob } from './pages/ViewOneSavedJob'
+import { ViewOneCompany } from './pages/ViewOneCompany'
+import { ViewOneSavedJob } from './pages/ViewOneSavedJob'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Signup } from './pages/Signup'
@@ -25,9 +25,7 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
   return {
       headers: {
       ...headers,
@@ -37,7 +35,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -52,9 +49,17 @@ function App() {
               path='/'
               index element={<Homepage />}
             />
-             <Route 
+            <Route
+              path='/:job_id'
+              element={<ViewOneCompany />}
+            />
+            <Route 
                 path="/savedjobs" 
                 element={<Savedjobs />} 
+            />
+            <Route 
+                path="/savedjobs/:id" 
+                element={<ViewOneSavedJob />} 
             />
             <Route 
                 path="/myprofile" 

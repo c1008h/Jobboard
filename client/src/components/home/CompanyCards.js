@@ -4,11 +4,9 @@ import { Card, Button } from 'react-bootstrap'
 import { authService } from '../../utils/auth';
 import { SAVE_JOB, REMOVE_JOB } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
-import { searchJob } from '../../utils/api'
 
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
-    const [searchedJob, setSearchedJob ] = useState({});
     const [userData, setUserData] = useState({})
     const [loading, setLoading] = useState(true)
     const [removeJob] = useMutation(REMOVE_JOB);
@@ -82,7 +80,9 @@ export const CompanyCards = (props) => {
     };
     const handleShow = async (job_id) => {
         setShow((prevState) => ({ ...prevState, [job_id]: true }));
-        // console.log(id)
+        console.log(job_id)
+
+        // history.push(`/${job_id}`)
 
     }
     const handleDeleteJob = async (job_id) => {
@@ -161,10 +161,12 @@ export const CompanyCards = (props) => {
                                 <Button type="button" 
                                     className="btn btn-secondary m-1"
                                     onClick={() => handleShow(item.job_id)}
-                                    >More Info</Button>
+                                >More Info</Button>
                             </Card> 
                         ))}
                     </div>
+
+
                 </>
             )}
         </div>    
