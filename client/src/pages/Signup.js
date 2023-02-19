@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { authService } from '../utils/auth';
-// import { Alert } from '@mui/material'
+import { Alert } from 'react-bootstrap'
 import { SignupForm } from '../components/signup/SignupForm'
 
 export const Signup = (props) => {
@@ -19,7 +19,7 @@ export const Signup = (props) => {
       try {
         const { data } = await addUser({
           variables: { 
-            username: username.trim(), 
+            username: username.trim(),
             email: email.trim(), 
             password: password.trim()
           },
@@ -39,7 +39,7 @@ export const Signup = (props) => {
                 <Link to='/'>Back to the homepage.</Link>
             </p>
             ) : (
-            <SignupForm onSubmit={handleFormSubmit}/>
+                <SignupForm onSubmit={handleFormSubmit}/>
             )}
         </>
     )
