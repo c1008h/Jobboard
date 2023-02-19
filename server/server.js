@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+app.use('/api/skill', require('./routes/api/skill'))
+
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start(); 
     server.applyMiddleware({ app });
