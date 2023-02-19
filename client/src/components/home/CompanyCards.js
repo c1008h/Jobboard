@@ -14,6 +14,7 @@ export const CompanyCards = (props) => {
     const [removeJob] = useMutation(REMOVE_JOB);
     console.log(props)
     const { data } = useQuery(QUERY_ME)
+    const lengthSearch = props.data.length
 
     useEffect(() => {
         if (data) {
@@ -22,8 +23,6 @@ export const CompanyCards = (props) => {
         }
     },[data])
     
-    console.log(props)
-
     // const renderButton = (index) => {
     //     const item = userData.find(item => item.job_id === index)
     //     if(item) {
@@ -114,55 +113,60 @@ export const CompanyCards = (props) => {
 
     return (
         <div className='container'>
-            <h4><strong>Results for {props.userJob}:</strong></h4>
-            <div className='col-12 row' style={{justifyContent:'center'}}> 
-                {props.data.map((item, index) => (
-                    <Card key={index.job_id}  className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
-                        {item.employer_logo ? (
-                            <Card.Img id='displayImage' src={item.employer_logo} alt='job' style={{height:'30%'}} /> )
-                            :
-                            (<Card.Title>{item.employer_name}</Card.Title>)
-                        }
-                        <Card.Body id='cardbody'>
-                            <p>Title: {item.job_title}</p>
-                            <p>Description: {item.job_description}</p>
-                            <p>Website: <a href={item.employer_website}>{item.employer_website}</a></p>
-                            <p>Remote: {item.is_remote ? 'True' : 'False'}</p>
-                            <p>{item.job_city}, {item.job_state}, {item.job_country}</p>
+            {lengthSearch < 1 ? (
+                <h4><strong>No Results Found For {props.userJob}</strong></h4>
+            ):(
+                <>
+                    <h4><strong>{lengthSearch} Results for {props.userJob}:</strong></h4>
+                    <div className='col-12 row' style={{justifyContent:'center'}}> 
+                        {props.data.map((item, index) => (
+                            <Card key={index.job_id}  className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
+                                {item.employer_logo ? (
+                                    <Card.Img id='displayImage' src={item.employer_logo} alt='job' style={{height:'30%'}} /> )
+                                    :
+                                    (<Card.Title>{item.employer_name}</Card.Title>)
+                                }
+                                <Card.Body id='cardbody'>
+                                    <p>Title: {item.job_title}</p>
+                                    <p>Description: {item.job_description}</p>
+                                    <p>Website: <a href={item.employer_website}>{item.employer_website}</a></p>
+                                    <p>Remote: {item.is_remote ? 'True' : 'False'}</p>
+                                    <p>{item.job_city}, {item.job_state}, {item.job_country}</p>
 
-                            {/* {userData && userData.savedJobs && !userData.savedJobs.includes(item.job_id) ? (
+                                    {/* {userData && userData.savedJobs && !userData.savedJobs.includes(item.job_id) ? (
+                                        <Button type="button" 
+                                            className="btn btn-secondary m-1"
+                                            onClick={() => handleDeleteJob(item.id)}
+                                        >Remove</Button> 
+                                    ): (
+                                        <Button
+                                        type="button" 
+                                        className="btn btn-secondary m-1"
+                                        onClick={() => 
+                                        handleSaveJob(job_id)}>
+                                    Save</Button>)} */}
+                                    {/* {renderButton(userData, item.id)} */}
+                                    {/* <OneFood 
+                                        show={show}
+                                        onHide={() => handleClose(item.id)}
+                                        onClick={() => handleClose(item.id)}
+                                        data={item}
+                                        handleClose={handleClose}
+                                        id={id}
+                                        review={reviews}
+                                        handleSaveFood={handleSaveFood}
+                                        handleDeleteFood={handleDeleteFood}
+                                    /> */}
+                                </Card.Body>
                                 <Button type="button" 
                                     className="btn btn-secondary m-1"
-                                    onClick={() => handleDeleteJob(item.id)}
-                                >Remove</Button> 
-                            ): (
-                                <Button
-                                type="button" 
-                                className="btn btn-secondary m-1"
-                                onClick={() => 
-                                handleSaveJob(job_id)}>
-                            Save</Button>)} */}
-                            {/* {renderButton(userData, item.id)} */}
-                            {/* <OneFood 
-                                show={show}
-                                onHide={() => handleClose(item.id)}
-                                onClick={() => handleClose(item.id)}
-                                data={item}
-                                handleClose={handleClose}
-                                id={id}
-                                review={reviews}
-                                handleSaveFood={handleSaveFood}
-                                handleDeleteFood={handleDeleteFood}
-                            /> */}
-                        </Card.Body>
-                        <Button type="button" 
-                            className="btn btn-secondary m-1"
-                            onClick={() => handleShow(item.job_id)}
-                            >More Info</Button>
-                    </Card> 
-
-                ))}
-            </div>
+                                    onClick={() => handleShow(item.job_id)}
+                                    >More Info</Button>
+                            </Card> 
+                        ))}
+                    </div>
+                </>
+            )}
         </div>    
     )
 }
