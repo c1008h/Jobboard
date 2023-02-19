@@ -3,7 +3,6 @@ const cors = require('cors')
 const { ApolloServer } = require('apollo-server-express');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
-const { InMemoryCache } = require('apollo-cache-inmemory');
 
 const { typeDefs, resolvers } = require('./schemas');
 
@@ -14,11 +13,6 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: authMiddleware,
-    persistedQueryCache: new InMemoryCache({
-      addTypename: false,
-      resultCaching: false,
-      maxSize: 1000,
-    }),
 });
 
 app.use(cors())
