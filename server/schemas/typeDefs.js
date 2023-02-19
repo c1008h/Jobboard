@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String!
     savedJobs: [Job]
   }
+  
   type Job {
     job_id: String!
     employer_name: String

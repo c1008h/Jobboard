@@ -47,7 +47,7 @@ const resolvers = {
             { $addToSet: { savedFoods: input } },
             { new: true }
         )
-        console.log('successfully saved the food')
+        console.log('successfully saved the job')
 
         return updatedUser;
         }

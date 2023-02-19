@@ -17,7 +17,7 @@ export const CompanyCards = (props) => {
 
     useEffect(() => {
         if (data) {
-            setUserData(data.me.savedFoods)
+            setUserData(data.me.savedJobs)
             setLoading(false)
         }
     },[data])
@@ -51,24 +51,24 @@ export const CompanyCards = (props) => {
         }
     })
 
-    const handleSaveJob = async (job_id, employer_name, employer_logo, apply_link, description, is_remote, posted_date, country, state, city, offer_expire) => {
+    const handleSaveJob = async (job_id, employer_name, employer_logo, job_apply_link, job_description, job_is_remote, job_posted_at_datetime_utc, job_country, job_state, job_city, job_offer_expire) => {
         const token = authService.loggedIn() ? authService.getToken() : null;
         if(!token) {
             return false
         }
         try {
             await saveJob({ variables: { input: {
-                jobId: job_id,
+                job_id: job_id,
                 employer_name: employer_name,
                 employer_logo: employer_logo,
-                apply_link: apply_link,
-                description: description,
-                is_remote: is_remote,
-                posted_date: posted_date,
-                country: country,
-                state: state,
-                city: city,
-                offer_expire: offer_expire
+                apply_link: job_apply_link,
+                description: job_description,
+                is_remote: job_is_remote,
+                posted_date: job_posted_at_datetime_utc,
+                country: job_country,
+                state: job_state,
+                city: job_city,
+                offer_expire: job_offer_expire
             }}})
 
             if(saveJob.error) { throw new Error('Something went wrong.')}
@@ -82,9 +82,6 @@ export const CompanyCards = (props) => {
     const handleShow = async (job_id) => {
         setShow((prevState) => ({ ...prevState, [job_id]: true }));
         console.log(job_id)
-
-        // history.push(`/${job_id}`)
-
     }
     const handleDeleteJob = async (job_id) => {
         const token = authService.loggedIn() ? authService.getToken() : null
@@ -160,9 +157,13 @@ export const CompanyCards = (props) => {
                                     /> */}
                                 </Card.Body>
                                 <Button type="button" 
-                                    className={`btn ${isSelected ? 'selected' : ''}btn-secondary m-1`}
+                                    className='btn btn-secondary m-1'
                                     onClick={() => handleShow(item.job_id)}
                                 >More Info</Button>
+                                <Button type="button" 
+                                    className='btn-secondary m-1'
+                                    onClick={() => handleSaveJob(item.job_id, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}
+                                >Save Job</Button>
                             </Card> 
                         ))}
                     </div>

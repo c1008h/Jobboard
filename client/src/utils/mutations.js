@@ -30,7 +30,7 @@ export const SAVE_JOB = gql`
   mutation saveJob($input: SaveJobInput!) {
     saveJob(input: $input) {
       username
-      saveJobs {
+      savedJobs {
         job_id
         employer_name
         employer_logo
