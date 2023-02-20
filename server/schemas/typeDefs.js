@@ -9,6 +9,7 @@ const typeDefs = gql`
   }
   
   type Job {
+    _id: String!
     job_id: String!
     job_title: String
     employer_name: String
@@ -24,6 +25,7 @@ const typeDefs = gql`
   }
 
   input SaveJobInput {
+    _id: String!
     job_id: String!
     job_title: String
     employer_name: String
@@ -50,7 +52,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveJob(input: SaveJobInput!): User
-    removeJob(job_id: String!): User
+    removeJob(_id: String!): User
   }
 `;
 

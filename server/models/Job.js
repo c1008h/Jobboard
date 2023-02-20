@@ -1,6 +1,9 @@
 const { Schema } = require('mongoose');
 
 const jobSchema = new Schema ({
+    id: {
+        type: String
+    },
     job_id: {
         type: String,
         required: true

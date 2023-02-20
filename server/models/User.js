@@ -21,6 +21,7 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    
     savedJobs: [jobSchema],
   },
   // set this to use virtual below

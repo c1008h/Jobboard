@@ -7,12 +7,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { OneSavedJob } from './components/savedjobs/OneSavedJob'
 import { Homepage } from './pages/Homepage'
 import { MyProfile } from './pages/MyProfile'
 import { Savedjobs } from './pages/Savedjobs'
 import { ViewOneCompany } from './pages/ViewOneCompany'
-import { ViewOneSavedJob } from './pages/ViewOneSavedJob'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Signup } from './pages/Signup'
@@ -50,7 +49,7 @@ function App() {
               index element={<Homepage />}
             />
             <Route
-              path='/:job_id'
+              path='/:j_id'
               element={<ViewOneCompany />}
             />
             <Route 
@@ -58,8 +57,8 @@ function App() {
                 element={<Savedjobs />} 
             />
             <Route 
-                path="/savedjobs/:id" 
-                element={<ViewOneSavedJob />} 
+                path="/savedjobs/:j_id" 
+                component={ OneSavedJob } 
             />
             <Route 
                 path="/myprofile" 

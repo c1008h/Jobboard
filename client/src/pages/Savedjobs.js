@@ -21,7 +21,7 @@ export const Savedjobs = () => {
 
     const lengthSaved = userData.savedJobs ? userData.savedJobs.length : 0;
 
-    const handleDeleteJob = async (job_id) => {
+    const handleDeleteJob = async (_id) => {
         const token = authService.loggedIn() ? authService.getToken() : null
         if (!token) {
             return false
@@ -29,7 +29,7 @@ export const Savedjobs = () => {
 
         try {
             const updatedData = await removeJob({
-                variables: { job_id: job_id }
+                variables: { _id: _id }
             })
             if(updatedData.error) {
                 throw new Error('Something went wrong.')
@@ -62,11 +62,11 @@ export const Savedjobs = () => {
                         (<Card.Title>{savedJobs.employer_name}</Card.Title>)
                     }
                     <Card.Body id='cardbody'>
-                        <p>Title: {savedJobs.job_title}</p>
-                        <p>Description: {savedJobs.job_description}</p>
-                        <p>Website: <a href={savedJobs.employer_website}>{savedJobs.employer_website}</a></p>
+                        <p>Title: {savedJobs.job_id}</p>
+                        <p>Description: {savedJobs.description}</p>
+                        <p>Apply: <a href={savedJobs.apply_link}>{savedJobs.apply_link}</a></p>
                         <p>Remote: {savedJobs.is_remote ? 'True' : 'False'}</p>
-                        <p>{savedJobs.job_city}, {savedJobs.job_state}, {savedJobs.job_country}</p>
+                        <p>{savedJobs.city}, {savedJobs.state}, {savedJobs.country}</p>
                         </Card.Body>
                         {/* <Button type="button" 
                             className='btn btn-secondary m-1'
@@ -74,7 +74,7 @@ export const Savedjobs = () => {
                         >More Info</Button> */}
                         <Button type="button" 
                             className='btn-secondary m-1'
-                            onClick={() => handleDeleteJob(savedJobs.job_id)}
+                            onClick={() => handleDeleteJob(savedJobs._id)}
                         >Remove</Button>
                     </Card> 
                 ))}

@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import CloseButton from 'react-bootstrap/CloseButton';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const Root = styled('div')(
     ({ theme }) => `
@@ -12,7 +13,7 @@ const Root = styled('div')(
     font-size: 14px;
   `,
 );
-  
+  axios.post('http://localhost:3002/user/file')
 const Label = styled('label')`
     padding: 0 0 4px;
     line-height: 1.5;

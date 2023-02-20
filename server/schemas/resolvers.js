@@ -53,12 +53,12 @@ const resolvers = {
         }
         throw new AuthenticationError ('You need to be logged in.');
       },
-      removeJob: async (parent, { job_id } , context) => {
+      removeJob: async (parent, { _id } , context) => {
         if (context.user) {
           
           const updatedUser = await User.findByIdAndUpdate(
             { _id: context.user._id },
-            { $pull: { savedJobs: { job_id : job_id }} },
+            { $pull: { savedJobs: { _id : _id }} },
             { new: true }
           )
           console.log('successfully removed the job')
