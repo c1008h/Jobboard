@@ -4,6 +4,7 @@ As developers, we understand the challenges that come with losing a job, especia
 Our job portal is easy to use, with a user-friendly interface that allows job seekers to browse job listings, submit applications, and track their progress. Our portal is designed to match job seekers with the right opportunities, based on their skills, experience, and preferences.
 
 <img src="https://i.ibb.co/sRH9Lyk/image-2023-02-20-050758194.png"/>
+
 # Description
 **Jobboard** like any other job seeking platform provides job listings to users and opportunities to connect to possible employers. However it is specially curated towards individuals in the tech industry and more specifically towards those impacted by company lay offs. Jobboard aims to facilitate cooperation between companies and employees--where companies can allocate badges to outstanding employees who were laid off so that their good standing can be acknowledged by other job recruiters. Currently, Users can register an account and promptly search and save jobs they are interested in.
 ### Created with 
