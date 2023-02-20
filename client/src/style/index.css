@@ -15,7 +15,7 @@
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     background-color: var(--main);
     background-size: cover;
     padding: 5% 0;
