@@ -2,6 +2,10 @@ import React from 'react'
 import { Typography, Grid, Avatar, Box, Stack } from '@mui/material'
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import { deepOrange, deepPurple } from '@mui/material/colors';
+import { useState } from "react"
+import { createRoot } from "react-dom/client"
+import FileUpload from "react-mui-fileuploader"
+
 // import { CheckIcon } from '@mui/icons-material';
 import {  Root, 
     Label,
@@ -36,6 +40,24 @@ export const MyProfile = () => {
 
     // console.log(data[0])
     // axios.get()
+    const [filesToUpload, setFilesToUpload] = useState([])
+
+    const handleFilesChange = (files) => {
+        // Update chosen files
+        setFilesToUpload([...files])
+    };
+
+    const uploadFiles = () => {
+        // Create a form and post it to server
+        let formData = new FormData()
+        filesToUpload.forEach((file) => formData.append("files", file))
+
+        fetch("/file/upload", {
+            method: "POST",
+            body: formData
+        })
+    }
+
     return (
         <Box>
             <Typography fontSize={30}>My Profile</Typography>
@@ -64,7 +86,7 @@ export const MyProfile = () => {
 
             </Stack>
             <div style={{ padding: '5%' }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={20}>
                 <Grid item xs={4}>
                     <div style={{paddingBottom: '5%', fontSize:'20px'}}>
                     <b>Administrator</b>
@@ -79,6 +101,14 @@ export const MyProfile = () => {
                 
                 <Grid item xs={8}>
                     test
+                        <>
+                            <FileUpload
+                                multiFile={true}
+                                onFilesChange={handleFilesChange}
+                                onContextReady={(context) => { }}
+                            />
+                            <button onClick={uploadFiles}>Upload</button>
+                        </>
                 </Grid>
                 
             </Grid>
