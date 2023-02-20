@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid, Avatar, Box, Stack } from '@mui/material'
+import { Typography, Grid, Avatar, Box, Stack, Button} from '@mui/material'
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import { useState } from "react"
@@ -51,11 +51,12 @@ export const MyProfile = () => {
         // Create a form and post it to server
         let formData = new FormData()
         filesToUpload.forEach((file) => formData.append("files", file))
-
-        fetch("/file/upload", {
+        console.log(
+        fetch("/api/upload", {
             method: "POST",
-            body: formData
-        })
+            body: formData,
+        }));
+       
     }
 
     return (
@@ -107,7 +108,7 @@ export const MyProfile = () => {
                                 onFilesChange={handleFilesChange}
                                 onContextReady={(context) => { }}
                             />
-                            <button onClick={uploadFiles}>Upload</button>
+                            <Button variant="contained" onClick={uploadFiles}>Upload</Button>
                         </>
                 </Grid>
                 

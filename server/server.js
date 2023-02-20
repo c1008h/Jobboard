@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/skill', require('./routes/api/skill'))
 app.use('/api/job', require('./routes/api/job'))
+app.use('/api/upload', require('./routes/api/profile'))
 
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start(); 
