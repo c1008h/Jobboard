@@ -1,6 +1,7 @@
 import React from 'react'
-import { Typography, Box, Stack } from '@mui/material'
+import { Typography, Grid, Avatar, Box, Stack } from '@mui/material'
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 // import { CheckIcon } from '@mui/icons-material';
 import {  Root, 
     Label,
@@ -62,6 +63,26 @@ export const MyProfile = () => {
                  ) : null )} */}
 
             </Stack>
+            <div style={{ padding: '5%' }}>
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                    <div style={{paddingBottom: '5%', fontSize:'20px'}}>
+                    <b>Administrator</b>
+                    </div>
+                    <Avatar sx={{ bgcolor: deepOrange[500], width: 150, height: 150, fontSize:50,}}>A</Avatar>
+                    <hr></hr>
+                    <div>
+                    <b>Bio</b>
+                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                </Grid>
+                
+                <Grid item xs={8}>
+                    test
+                </Grid>
+                
+            </Grid>
+            </div>
 
         </Box>
     )
