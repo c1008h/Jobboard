@@ -4,6 +4,7 @@ import { authService } from '../utils/auth';
 import { REMOVE_JOB } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export const Savedjobs = () => {
     const [removeJob] = useMutation(REMOVE_JOB);
@@ -68,10 +69,12 @@ export const Savedjobs = () => {
                         <p>Remote: {savedJobs.is_remote ? 'True' : 'False'}</p>
                         <p>{savedJobs.city}, {savedJobs.state}, {savedJobs.country}</p>
                         </Card.Body>
-                        {/* <Button type="button" 
+                        <Link to={`/${savedJobs._id}`}>
+                        <Button type="button" 
                             className='btn btn-secondary m-1'
-                            onClick={() => handleShow(jobs.job_id)}
-                        >More Info</Button> */}
+                            // onClick={() => handleShow(jobs._id)}
+                        >More Info</Button>
+                        </Link>
                         <Button type="button" 
                             className='btn-secondary m-1'
                             onClick={() => handleDeleteJob(savedJobs._id)}
