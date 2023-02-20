@@ -17,7 +17,7 @@ export const OneSavedJob = () => {
     return (
         <div>
             <h2>{id}</h2>
-            <img src={job[0].employer_logo} alt='employer logo'/>
+            {job[0].employer_logo? <img src={job[0].employer_logo} alt='employer logo'/> : null }
             <p>Additional content goes here.</p>
         </div>
     )
