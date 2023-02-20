@@ -10,6 +10,7 @@ const typeDefs = gql`
   
   type Job {
     job_id: String!
+    job_title: String
     employer_name: String
     employer_logo: String
     apply_link: String
@@ -24,6 +25,7 @@ const typeDefs = gql`
 
   input SaveJobInput {
     job_id: String!
+    job_title: String
     employer_name: String
     employer_logo: String
     apply_link: String

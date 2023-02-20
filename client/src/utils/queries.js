@@ -8,6 +8,7 @@ export const QUERY_ME = gql`
       email
       savedJobs {
         job_id
+        job_title
         employer_name
         employer_logo
         apply_link

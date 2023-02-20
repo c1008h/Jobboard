@@ -8,7 +8,6 @@ import { QUERY_ME } from '../../utils/queries';
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
     const [userData, setUserData] = useState({})
-    const [isSelected, setIsSelected] = useState(false);
     const [loading, setLoading] = useState(true)
     const [removeJob] = useMutation(REMOVE_JOB);
     console.log(props)
@@ -17,7 +16,7 @@ export const CompanyCards = (props) => {
 
     useEffect(() => {
         if (data) {
-            setUserData(data.me.savedJobs)
+            setUserData(data.me)
             setLoading(false)
         }
     },[data])
@@ -51,7 +50,7 @@ export const CompanyCards = (props) => {
         }
     })
 
-    const handleSaveJob = async (job_id, employer_name, employer_logo, job_apply_link, job_description, job_is_remote, job_posted_at_datetime_utc, job_country, job_state, job_city, job_offer_expire) => {
+    const handleSaveJob = async (job_title, job_id, employer_name, employer_logo, job_apply_link, job_description, job_is_remote, job_posted_at_datetime_utc, job_country, job_state, job_city, job_offer_expire) => {
         const token = authService.loggedIn() ? authService.getToken() : null;
         if(!token) {
             return false
@@ -59,6 +58,7 @@ export const CompanyCards = (props) => {
         try {
             await saveJob({ variables: { input: {
                 job_id: job_id,
+                job_title: job_title,
                 employer_name: employer_name,
                 employer_logo: employer_logo,
                 apply_link: job_apply_link,
@@ -162,7 +162,7 @@ export const CompanyCards = (props) => {
                                 >More Info</Button>
                                 <Button type="button" 
                                     className='btn-secondary m-1'
-                                    onClick={() => handleSaveJob(item.job_id, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}
+                                    onClick={() => handleSaveJob(item.job_id, item.job_title, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}
                                 >Save Job</Button>
                             </Card> 
                         ))}
