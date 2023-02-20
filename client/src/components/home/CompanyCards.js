@@ -4,7 +4,8 @@ import { Card, Button } from 'react-bootstrap'
 import { authService } from '../../utils/auth';
 import { SAVE_JOB, REMOVE_JOB } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { ViewOneCompany } from './ViewOneCompany';
 
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
@@ -125,13 +126,15 @@ export const CompanyCards = (props) => {
                                     Save</Button>)} */}
                                     {/* {renderButton(userData, item.id)} */}
                                 </Card.Body>
-                                <Link to={`/${item.job_id}`}><Button type="button" 
-                                    className='btn btn-secondary m-1'
+                                <div className='col-12' style={{justifyContent:'center', alignItems:'center', textAlign:'center'}}>
+                                <Link to={`/${item.job_id}`}>
+                                    <Button type="button" className='btn btn-secondary m-1'
                                 >More Info</Button></Link>
                                 <Button type="button" 
                                     className='btn-secondary m-1'
                                     onClick={() => handleSaveJob(item.job_id, item.job_title, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}
                                 >Save Job</Button>
+                                </div>
                             </Card> 
                         ))}
                     </div>
@@ -139,6 +142,9 @@ export const CompanyCards = (props) => {
 
                 </>
             )}
+             <Routes>
+                <Route path='/:id' element={<ViewOneCompany/>} />
+            </Routes>
         </div>    
     )
 }

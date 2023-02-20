@@ -29,3 +29,16 @@ export const searchJob = ( userJob ) => {
     })
 }
 
+export const searchJob_Id = ( job_id ) => {
+    return axios
+    .post('http://localhost:3002/api/job/id', {
+        job_id: job_id
+    })
+    .then((response) => {
+        console.log(response.data)
+        return response.data
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}

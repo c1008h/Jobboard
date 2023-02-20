@@ -15,4 +15,15 @@ router.post('/', (req, res) => {
     console.log(matches)
 })
 
+router.post('/id', (req, res) => {
+    const { job_id } = req.body;
+    const matches = data.data.filter(job => job.job_id.includes(job_id));
+
+    if (!matches) {
+        console.log('No matches found!')
+    }
+    res.send(matches)
+    console.log(matches)
+})
+
 module.exports = router;
