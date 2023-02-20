@@ -12,6 +12,7 @@ export const Savedjobs = () => {
     const { data } = useQuery(QUERY_ME)
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({})
+
     // const [id, setID] = useState()
 
     useEffect(() => {
@@ -78,10 +79,12 @@ export const Savedjobs = () => {
                                 // onClick={() => setID(savedJobs.job_id)}
                             >More Info</Button>
                             </Link>
+
                             <Button type="button" 
                                 className='btn-secondary m-1'
                                 onClick={() => handleDeleteJob(savedJobs._id)}
                             >Remove</Button>
+
                         </div>
                     </Card> 
                 ))}
