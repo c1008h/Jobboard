@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { useMutation, useQuery } from '@apollo/client';
+import { REMOVE_JOB } from '../../utils/mutations';
+import { authService } from '../../utils/auth';
 import { useParams } from 'react-router-dom';
 import { searchJob } from '../../utils/api';
 import { Button } from 'react-bootstrap';
@@ -7,7 +10,8 @@ import { Link } from 'react-router-dom';
 export const OneSavedJob = () => {
     const { id } = useParams();
     const [job, setJob] = useState({});
-
+    const [userData, setUserData] = useState({})
+    const [removeJob] = useMutation(REMOVE_JOB);
     useEffect(() => {
         const fetchJob = async () => {
             try {
@@ -20,6 +24,26 @@ export const OneSavedJob = () => {
         fetchJob();
     }, [id]);
     console.log(job)
+
+    const handleDeleteJob = async (_id) => {
+        const token = authService.loggedIn() ? authService.getToken() : null
+        if (!token) {
+            return false
+        }
+
+        try {
+            const updatedData = await removeJob({
+                variables: { _id: _id }
+            })
+            if(updatedData.error) {
+                throw new Error('Something went wrong.')
+            }
+            setUserData(updatedData.data.removeJob)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const date = new Date(job.job_posted_at_datetime_utc);
     const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -63,8 +87,11 @@ export const OneSavedJob = () => {
                     <Button>Apply</Button>
                 </Link>
                 : null}
-                <Button>Remove</Button>
+                <Link to={'/savedjobs'}>
+                    <Button onClick={() => handleDeleteJob(job.job_id)}>Remove</Button>
+                </Link>
             </div>
         </div>
     )
+}
 }
