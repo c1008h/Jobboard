@@ -16,10 +16,19 @@ export const Savedjobs = () => {
     // const [id, setID] = useState()
 
     useEffect(() => {
-        if (data) {
-            setUserData(data.me)
-            setLoading(false)
+        const fetchJob = async () => {
+            try {
+                setUserData(data.me)
+                setLoading(false)
+            } catch (error) {
+                console.error(error)
+            }
         }
+        fetchJob();
+        // if (data) {
+        //     setUserData(data.me)
+        //     setLoading(false)
+        // }
     },[data])
     console.log(userData.savedJobs)
 
@@ -57,7 +66,7 @@ export const Savedjobs = () => {
             <h2>
                 {lengthSaved < 1 ? 'You Have No Saved Jobs!' : `You have ${lengthSaved} Saved job(s)`}
             </h2>
-            <div>
+            <div className='col-12 row' style={{justifyContent:'center'}}>
                 {userData && userData.savedJobs && userData.savedJobs.map((savedJobs, index) => (
                     <Card key={index.job_id} className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
                     {savedJobs.employer_logo ? (

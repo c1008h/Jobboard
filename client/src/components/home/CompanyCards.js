@@ -99,7 +99,7 @@ export const CompanyCards = (props) => {
                     <h4><strong>{lengthSearch} Results for {props.userJob}:</strong></h4>
                     <div className='col-12 row' style={{justifyContent:'center'}}> 
                         {props.data.map((item, index) => (
-                            <Card key={index.job_id}  className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
+                            <Card key={index.job_id} className='card col-xl-3 col-md-5 col-sm-8 col-xs-12' id='displayCards'>
                                 {item.employer_logo ? (
                                     <Card.Img id='displayImage' src={item.employer_logo} alt='job' style={{height:'30%'}} /> )
                                     :
