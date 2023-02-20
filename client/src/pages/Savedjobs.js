@@ -12,7 +12,7 @@ export const Savedjobs = () => {
     const { data } = useQuery(QUERY_ME)
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({})
-    const [id, setID] = useState()
+    // const [id, setID] = useState()
 
     useEffect(() => {
         if (data) {
@@ -74,7 +74,7 @@ export const Savedjobs = () => {
                         <Link to={`/savedjobs/${savedJobs.job_id}`}>
                         <Button type="button" 
                             className='btn btn-secondary m-1'
-                            onClick={() => setID(savedJobs.job_id)}
+                            // onClick={() => setID(savedJobs.job_id)}
                         >More Info</Button>
                         </Link>
                         <Button type="button" 

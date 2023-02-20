@@ -4,7 +4,8 @@ import { Card, Button } from 'react-bootstrap'
 import { authService } from '../../utils/auth';
 import { SAVE_JOB, REMOVE_JOB } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { ViewOneCompany } from './ViewOneCompany';
 
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
@@ -125,8 +126,8 @@ export const CompanyCards = (props) => {
                                     Save</Button>)} */}
                                     {/* {renderButton(userData, item.id)} */}
                                 </Card.Body>
-                                <Link to={`/${item.job_id}`}><Button type="button" 
-                                    className='btn btn-secondary m-1'
+                                <Link to={`/${item.job_id}`}>
+                                    <Button type="button" className='btn btn-secondary m-1'
                                 >More Info</Button></Link>
                                 <Button type="button" 
                                     className='btn-secondary m-1'
@@ -139,6 +140,9 @@ export const CompanyCards = (props) => {
 
                 </>
             )}
+             <Routes>
+                <Route path='/:id' element={<ViewOneCompany/>} />
+            </Routes>
         </div>    
     )
 }
