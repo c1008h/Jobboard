@@ -23,6 +23,7 @@ export const OneSavedJob = () => {
 
     const date = new Date(job.job_posted_at_datetime_utc);
     const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
     return (
         <div style={{padding:'10%', justifyContent:'center', alignItems:'center'}}>
             <h2>{id}</h2>
@@ -56,12 +57,14 @@ export const OneSavedJob = () => {
                 <li key={index}>{benefit}</li>
                 ))}
             </ul>  */}
-            {job.job_apply_link?
-            <Link to={job.job_apply_link} target="_blank" rel="noopener noreferrer">
-                <Button>Apply</Button>
-            </Link>
-            : null}
-            <Button>Remove</Button>
+            <div className='col-12' style={{justifyContent:'center', alignItems:'center', textAlign:'center'}}>
+                {job.job_apply_link?
+                <Link to={job.job_apply_link} target="_blank" rel="noopener noreferrer">
+                    <Button>Apply</Button>
+                </Link>
+                : null}
+                <Button>Remove</Button>
+            </div>
         </div>
     )
 }

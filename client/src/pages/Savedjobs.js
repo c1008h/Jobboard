@@ -71,16 +71,18 @@ export const Savedjobs = () => {
                         <p>Remote: {savedJobs.is_remote ? 'True' : 'False'}</p>
                         <p>{savedJobs.city}, {savedJobs.state}, {savedJobs.country}</p>
                         </Card.Body>
-                        <Link to={`/savedjobs/${savedJobs.job_id}`}>
-                        <Button type="button" 
-                            className='btn btn-secondary m-1'
-                            // onClick={() => setID(savedJobs.job_id)}
-                        >More Info</Button>
-                        </Link>
-                        <Button type="button" 
-                            className='btn-secondary m-1'
-                            onClick={() => handleDeleteJob(savedJobs._id)}
-                        >Remove</Button>
+                        <div className='col-12' style={{justifyContent:'center', alignItems:'center', textAlign:'center'}}>
+                            <Link to={`/savedjobs/${savedJobs.job_id}`}>
+                            <Button type="button" 
+                                className='btn btn-secondary m-1'
+                                // onClick={() => setID(savedJobs.job_id)}
+                            >More Info</Button>
+                            </Link>
+                            <Button type="button" 
+                                className='btn-secondary m-1'
+                                onClick={() => handleDeleteJob(savedJobs._id)}
+                            >Remove</Button>
+                        </div>
                     </Card> 
                 ))}
                 <Routes>

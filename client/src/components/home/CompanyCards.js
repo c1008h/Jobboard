@@ -126,6 +126,7 @@ export const CompanyCards = (props) => {
                                     Save</Button>)} */}
                                     {/* {renderButton(userData, item.id)} */}
                                 </Card.Body>
+                                <div className='col-12' style={{justifyContent:'center', alignItems:'center', textAlign:'center'}}>
                                 <Link to={`/${item.job_id}`}>
                                     <Button type="button" className='btn btn-secondary m-1'
                                 >More Info</Button></Link>
@@ -133,6 +134,7 @@ export const CompanyCards = (props) => {
                                     className='btn-secondary m-1'
                                     onClick={() => handleSaveJob(item.job_id, item.job_title, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}
                                 >Save Job</Button>
+                                </div>
                             </Card> 
                         ))}
                     </div>
