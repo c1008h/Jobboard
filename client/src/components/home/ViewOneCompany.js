@@ -48,3 +48,4 @@ export const ViewOneCompany = () => {
         </div>
     )
 }
+}
