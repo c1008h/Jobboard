@@ -4,6 +4,7 @@ import { Card, Button } from 'react-bootstrap'
 import { authService } from '../../utils/auth';
 import { SAVE_JOB, REMOVE_JOB } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
+import { Link } from 'react-router-dom';
 
 export const CompanyCards = (props) => {
     const [show, setShow] = useState({});
@@ -76,13 +77,6 @@ export const CompanyCards = (props) => {
             console.error(error)
         }
     }
-    const handleClose = (job_id) => {
-        setShow((prevState) => ({ ...prevState, [job_id]: false }));
-    };
-    const handleShow = async (job_id) => {
-        setShow((prevState) => ({ ...prevState, [job_id]: true }));
-        console.log(job_id)
-    }
     const handleDeleteJob = async (job_id) => {
         const token = authService.loggedIn() ? authService.getToken() : null
         if (!token) {
@@ -105,9 +99,9 @@ export const CompanyCards = (props) => {
     if(!token) {
         return <h2>Please login first</h2>
     }
-    if(loading) {
-        return <h2>LOADING...</h2>
-    }
+    // if(loading) {
+    //     return <h2>LOADING...</h2>
+    // }
 
     return (
         <div className='container'>
@@ -144,22 +138,10 @@ export const CompanyCards = (props) => {
                                         handleSaveJob(job_id)}>
                                     Save</Button>)} */}
                                     {/* {renderButton(userData, item.id)} */}
-                                    {/* <OneFood 
-                                        show={show}
-                                        onHide={() => handleClose(item.id)}
-                                        onClick={() => handleClose(item.id)}
-                                        data={item}
-                                        handleClose={handleClose}
-                                        id={id}
-                                        review={reviews}
-                                        handleSaveFood={handleSaveFood}
-                                        handleDeleteFood={handleDeleteFood}
-                                    /> */}
                                 </Card.Body>
-                                <Button type="button" 
+                                <Link to={`/${item.job_id}`}><Button type="button" 
                                     className='btn btn-secondary m-1'
-                                    onClick={() => handleShow(item.job_id)}
-                                >More Info</Button>
+                                >More Info</Button></Link>
                                 <Button type="button" 
                                     className='btn-secondary m-1'
                                     onClick={() => handleSaveJob(item.job_id, item.job_title, item.employer_name, item.employer_logo, item.job_apply_link, item.job_description, item.job_is_remote, item.job_posted_at_datetime_utc, item.job_country, item.job_state, item.job_city, item.job_offer_expire)}

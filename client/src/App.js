@@ -11,7 +11,7 @@ import { OneSavedJob } from './components/savedjobs/OneSavedJob'
 import { Homepage } from './pages/Homepage'
 import { MyProfile } from './pages/MyProfile'
 import { Savedjobs } from './pages/Savedjobs'
-import { ViewOneCompany } from './pages/ViewOneCompany'
+import { ViewOneCompany } from './components/home/ViewOneCompany'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Signup } from './pages/Signup'
@@ -50,7 +50,7 @@ function App() {
             />
             <Route
               path='/:j_id'
-              element={<ViewOneCompany />}
+              component={ ViewOneCompany }
             />
             <Route 
                 path="/savedjobs" 
