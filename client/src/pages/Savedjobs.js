@@ -13,8 +13,6 @@ export const Savedjobs = () => {
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({})
 
-    // const [id, setID] = useState()
-
     useEffect(() => {
         const fetchJob = async () => {
             try {
@@ -25,10 +23,6 @@ export const Savedjobs = () => {
             }
         }
         fetchJob();
-        // if (data) {
-        //     setUserData(data.me)
-        //     setLoading(false)
-        // }
     },[data])
     console.log(userData.savedJobs)
 
