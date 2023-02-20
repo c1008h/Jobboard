@@ -7,7 +7,7 @@ export const QUERY_ME = gql`
       username
       email
       savedJobs {
-        j_id
+        _id
         job_id
         job_title
         employer_name

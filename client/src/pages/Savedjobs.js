@@ -4,13 +4,15 @@ import { authService } from '../utils/auth';
 import { REMOVE_JOB } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
 import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { OneSavedJob } from '../components/savedjobs/OneSavedJob';
 
 export const Savedjobs = () => {
     const [removeJob] = useMutation(REMOVE_JOB);
     const { data } = useQuery(QUERY_ME)
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({})
+    const [id, setID] = useState()
 
     useEffect(() => {
         if (data) {
@@ -69,10 +71,10 @@ export const Savedjobs = () => {
                         <p>Remote: {savedJobs.is_remote ? 'True' : 'False'}</p>
                         <p>{savedJobs.city}, {savedJobs.state}, {savedJobs.country}</p>
                         </Card.Body>
-                        <Link to={`/${savedJobs._id}`}>
+                        <Link to={`/savedjobs/${savedJobs.job_id}`}>
                         <Button type="button" 
                             className='btn btn-secondary m-1'
-                            // onClick={() => handleShow(jobs._id)}
+                            onClick={() => setID(savedJobs.job_id)}
                         >More Info</Button>
                         </Link>
                         <Button type="button" 
@@ -81,6 +83,9 @@ export const Savedjobs = () => {
                         >Remove</Button>
                     </Card> 
                 ))}
+                <Routes>
+                    <Route path='/savedjobs/:id' element={<OneSavedJob/>} />
+                </Routes>
             </div>
         </div>
     )

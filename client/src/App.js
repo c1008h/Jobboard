@@ -46,19 +46,19 @@ function App() {
           <Routes>
             <Route
               path='/'
-              index element={<Homepage />}
+              element ={<Homepage />}
             />
             <Route
-              path='/:j_id'
-              component={ ViewOneCompany }
+              path='/:id'
+              element={ <ViewOneCompany /> }
             />
             <Route 
                 path="/savedjobs" 
                 element={<Savedjobs />} 
             />
             <Route 
-                path="/savedjobs/:j_id" 
-                component={ OneSavedJob } 
+                path="/savedjobs/:id" 
+                element={ <OneSavedJob/> } 
             />
             <Route 
                 path="/myprofile" 

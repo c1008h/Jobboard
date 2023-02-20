@@ -21,20 +21,6 @@ export const CompanyCards = (props) => {
             setLoading(false)
         }
     },[data])
-    
-    // const renderButton = (index) => {
-    //     const item = userData.find(item => item.job_id === index)
-    //     if(item) {
-    //         return <Button type="button" 
-    //         className="btn btn-secondary m-1"
-    //         onClick={() => handleDeleteJob(item.job_id)}>Remove</Button>
-    //     } else {
-    //         return <Button type="button" 
-    //         className="btn btn-secondary m-1"
-    //         onClick={() => 
-    //         handleSaveJob(item.job_id)}>Save</Button>
-    //     }
-    // }
 
     const [saveJob] = useMutation(SAVE_JOB, {
         update(cache, { data: { saveJob }}) {
@@ -99,9 +85,9 @@ export const CompanyCards = (props) => {
     if(!token) {
         return <h2>Please login first</h2>
     }
-    // if(loading) {
-    //     return <h2>LOADING...</h2>
-    // }
+    if(loading) {
+        return <h2>LOADING...</h2>
+    }
 
     return (
         <div className='container'>

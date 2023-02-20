@@ -1,7 +1,7 @@
 const { Schema } = require('mongoose');
 
 const jobSchema = new Schema ({
-    id: {
+    _id: {
         type: String
     },
     job_id: {
